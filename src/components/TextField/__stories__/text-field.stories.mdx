@@ -1,0 +1,81 @@
+import { Meta, ArgsTable, Canvas, Story } from "@storybook/addon-docs";
+
+import {
+  createComponentTemplate,
+  createStoryMetaSettings,
+} from "../../../storybook/functions/create-component-story";
+
+import TextField from "../../TextField";
+
+export const metaSettings = createStoryMetaSettings({
+  component: TextField,
+  enumPropNamesArray: ["type", "size"],
+});
+
+<Meta
+  title="Components/TextField"
+  component={TextField}
+  argTypes={metaSettings.argTypes}
+  decorators={metaSettings.decorators}
+/>
+
+# TextField
+
+- [Overview](#overview)
+- [Props](#props)
+- [Variants](#variants)
+
+## Overview
+
+An input field includes a label and a text field users can type text into. They typically appear in forms and dialogs.
+
+<Canvas>
+  <Story
+    name="Overview"
+    args={{
+      ...TextField.defaultProps,
+      type: TextField.types.TEXT,
+      label: "Label",
+      placeholder: "Input label",
+    }}
+  >
+    {(args) => <TextField {...args} />}
+  </Story>
+</Canvas>
+
+## Props
+
+<ArgsTable of={TextField} />
+
+## Variants
+
+### Types
+
+<Canvas>
+  <Story name="Types">
+    <TextField
+      type={TextField.types.TEXT}
+      label="Email"
+      placeholder="youremail@email.com"
+    />
+    <TextField
+      type={TextField.types.PASSWORD}
+      label="Password"
+      placeholder="Your password"
+    />
+    <TextField type={TextField.types.DATE} label="Birthdate" />
+  </Story>
+</Canvas>
+
+### Disabled
+
+<Canvas>
+  <Story name="Disabled">
+    <TextField
+      type={TextField.types.TEXT}
+      label="Email"
+      placeholder="youremail@email.com"
+      disabled
+    />
+  </Story>
+</Canvas>

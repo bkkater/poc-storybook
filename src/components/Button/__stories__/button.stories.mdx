@@ -1,0 +1,134 @@
+import { Meta, ArgsTable, Canvas, Story } from "@storybook/addon-docs";
+
+import {
+  createComponentTemplate,
+  createStoryMetaSettings,
+} from "../../../storybook/functions/create-component-story";
+
+import Button from "../../Button";
+
+export const metaSettings = createStoryMetaSettings({
+  component: Button,
+  enumPropNamesArray: ["kind", "color", "size"],
+});
+
+<Meta
+  title="Components/Button"
+  component={Button}
+  argTypes={metaSettings.argTypes}
+  decorators={metaSettings.decorators}
+/>
+
+# Button
+
+- [Overview](#overview)
+- [Props](#props)
+- [Variants](#variants)
+
+## Overview
+
+Buttons allow users take actions with a single click.
+They should be clear indications that they triggering an action, buttons should be easy to find among other UI.
+
+<Canvas>
+  <Story
+    name="Overview"
+    args={{
+      ...Button.defaultProps,
+      label: "Nosso Botão",
+      id: "overview-button",
+    }}
+  >
+    {(args) => <Button {...args} />}
+  </Story>
+</Canvas>
+
+## Props
+
+<ArgsTable of={Button} />
+
+## Variants
+
+### Style Types
+
+<Canvas>
+  <Story name="Style Types">
+    <Button id="primary-button" kind={Button.kinds.PRIMARY} label="Primary" />
+    <Button
+      id="secondary-button"
+      kind={Button.kinds.SECONDARY}
+      label="Secondary"
+    />
+    <Button id="success-button" kind={Button.kinds.SUCCESS} label="Success" />
+    <Button id="danger-button" kind={Button.kinds.DANGER} label="Danger" />
+  </Story>
+</Canvas>
+
+### Sizes
+
+<Canvas>
+  <Story name="Sizes">
+    <Button id="large-button" size={Button.sizes.LARGE} label="Large" />
+    <Button id="medium-button" size={Button.sizes.MEDIUM} label="Medium" />
+    <Button id="small-button" size={Button.sizes.SMALL} label="Small" />
+  </Story>
+</Canvas>
+
+### Full Size
+
+<Canvas>
+  <Story name="Full size">
+    <Button id="fullSize-button" label="Full size" fullSize />
+  </Story>
+</Canvas>
+
+### Outline Types
+
+<Canvas>
+  <Story name="Outline Types">
+    <Button
+      id="outiline-primary-button"
+      kind={Button.kinds.PRIMARY}
+      label="Primary"
+      outline
+    />
+    <Button
+      id="outiline-secondary-button"
+      kind={Button.kinds.SECONDARY}
+      label="Secondary"
+      outline
+    />
+    <Button
+      id="outiline-success-button"
+      kind={Button.kinds.SUCCESS}
+      label="Success"
+      outline
+    />
+    <Button
+      id="outiline-danger-button"
+      kind={Button.kinds.DANGER}
+      label="Danger"
+      outline
+    />
+  </Story>
+</Canvas>
+
+### Disabled
+
+<Canvas>
+  <Story name="Disabled">
+    <Button
+      id="disabled-button"
+      kind={Button.kinds.PRIMARY}
+      label="Primary"
+      disabled
+    />
+    <Button
+      id="disabled-button-secondary"
+      kind={Button.kinds.SECONDARY}
+      label="Secondary"
+      outline
+      disabled
+    />
+  </Story>
+</Canvas>
